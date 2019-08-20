@@ -5,6 +5,9 @@ const app = express();
 connectDB();
 
 
+//init middleware
+app.use(express.json({extended:false})); // need for getting request in json
+
 // define routes
 
 app.use('/api/users', require('./routes/api/users'));
