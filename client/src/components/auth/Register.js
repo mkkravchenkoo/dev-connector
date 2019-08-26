@@ -2,11 +2,10 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import propTypes from 'prop-types'
 
-import axios from 'axios'
-
-const Register = ({setAlert}) => {
+const Register = ({setAlert, register}) => {
 
 	const [formData, setFormData] = useState({
 		name:'',
@@ -26,24 +25,7 @@ const Register = ({setAlert}) => {
 			setAlert('Passwords are not match', 'danger', 2500);
 
 		}else{
-			// const newUser = {
-			// 	name,
-			// 	email,
-			// 	password
-			// }
-			// try {
-			// 	const config = {
-			// 		headers:{
-			// 			'Content-Type': 'application/json',
-			// 		}
-			// 	};
-			// 	const body = JSON.stringify(newUser);
-			// 	const res = await axios.post('http://localhost:5000/api/users', body, config);
-			//
-			// 	console.log(res.data)
-			// }catch (e) {
-			// 	console.log(e)
-			// }
+			register({name, email, password});
 			console.log('Success')
 
 		}
@@ -60,7 +42,7 @@ const Register = ({setAlert}) => {
 						   name="name"
 						   value={name}
 						   onChange={onChange}
-						   required/>
+						   />
 				</div>
 				<div className="form-group">
 					<input type="email"
@@ -68,7 +50,7 @@ const Register = ({setAlert}) => {
 						   name="email"
 						   value={email}
 						   onChange={onChange}
-						   required
+
 					/>
 					<small className="form-text"
 					>This site uses Gravatar so if you want a profile image, use a
@@ -106,10 +88,11 @@ const Register = ({setAlert}) => {
 }
 
 Register.propTypes = {
-	setAlert: propTypes.func.isRequired
+	setAlert: propTypes.func.isRequired,
+	register: propTypes.func.isRequired
 }
 
 export default connect(
 	null,
-	{ setAlert }
+	{ setAlert, register }
 )(Register);
