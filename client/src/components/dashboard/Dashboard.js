@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getCurrentProfile} from '../../actions/profile'
+import DashboardActions from './DashboardActions'
 import Spinner from '../layout/Spinner'
 
 function Dashboard({getCurrentProfile, auth:{user}, profile:{loading, profile}}) {
@@ -17,7 +18,11 @@ function Dashboard({getCurrentProfile, auth:{user}, profile:{loading, profile}})
 				<i className="fas fa-user"/>
 				Welcome, {user && user.name}
 			</p>
-			{profile !== null ?<>Has</>
+			{profile !== null
+				?
+				<>
+					<DashboardActions/>
+				</>
 				:
 				<>
 					<p>You have not yet setup a profile</p>
