@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import Moment from 'react-moment'
-const Experience = ({experience}) => {
+import {deleteExperience} from "../../actions/profile";
+
+const Experience = ({experience, deleteExperience}) => {
 
 	const experiences = experience.map((exp) => {
 		return (
@@ -15,7 +17,7 @@ const Experience = ({experience}) => {
 				</td>
 				<td>
 					<button
-						// onClick={() => deleteExperience(exp._id)}
+						onClick={() => deleteExperience(exp._id)}
 						className="btn btn-danger"
 					>
 						Delete
@@ -44,5 +46,6 @@ const Experience = ({experience}) => {
 }
 
 export default connect(
-
+	null,
+	{deleteExperience}
 )(Experience);

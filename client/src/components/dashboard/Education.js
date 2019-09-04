@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import Moment from 'react-moment'
-const Education = ({education}) => {
+import {deleteEducation} from "../../actions/profile";
+
+const Education = ({education, deleteEducation}) => {
 
 	const educations = education.map((edu) => {
 		return (
@@ -13,12 +15,14 @@ const Education = ({education}) => {
 					edu.to === null ? (' Now') : (<Moment format="YYYY/MM/DD">{edu.to}</Moment>)
 				}
 				</td>
-				<button
-					// onClick={() => deleteExperience(exp._id)}
-					className="btn btn-danger"
-				>
-					Delete
-				</button>
+				<td>
+					<button
+						onClick={() => deleteEducation(edu._id)}
+						className="btn btn-danger"
+					>
+						Delete
+					</button>
+				</td>
 			</tr>
 		)
 	})
@@ -42,5 +46,6 @@ const Education = ({education}) => {
 }
 
 export default connect(
-
+	null,
+	{deleteEducation}
 )(Education);
