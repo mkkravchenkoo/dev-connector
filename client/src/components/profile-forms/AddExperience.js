@@ -125,4 +125,4 @@ const AddExperience = ({addExperience, history}) => {
 export default connect(
 	null,
 	{addExperience}
-)(AddExperience);
+)(withRouter(AddExperience));

@@ -11,7 +11,7 @@ import Spinner from '../layout/Spinner'
 function Dashboard({getCurrentProfile, deleteAccount, auth:{user}, profile:{loading, profile}}) {
 	useEffect(() => {
 		getCurrentProfile()
-	}, [])
+	}, [getCurrentProfile])
 
 	return loading && profile === null ? <Spinner/> : (
 		<>

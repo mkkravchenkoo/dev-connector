@@ -125,4 +125,4 @@ const AddEducation = ({addEducation, history}) => {
 export default connect(
 	null,
 	{addEducation}
-)(AddEducation);
+)(withRouter(AddEducation));
