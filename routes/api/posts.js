@@ -52,7 +52,7 @@ router.post('/',[
 router.get('/', auth, async (req, res) => {
 	try {
 		const posts = await Post.find().sort({date:'-1'})
-		res.json({posts})
+		res.json(posts)
 	}catch (e) {
 		console.log(e);
 		req.status(500).send('Server error');
